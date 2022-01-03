@@ -1,4 +1,6 @@
-const Transaction = require("./model/Transactrion");
+const mongoose = require('mongoose')
+const Transaction = require('./server/model/transaction')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/bank', { useNewUrlParser: true })
 
 const transactions = [
     { amount: 3200, vendor: "Elevation", category: "Salary" },

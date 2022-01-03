@@ -1,10 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 function NavBar() {
   return (
     <div className="navbar">
-      <h1>NavBar</h1>
+      <Link to="/transactions">
+        <span>Transactions</span>
+      </Link>
+      <Link to="/operations">
+        <span>Operations</span>
+      </Link>
+      <Link to="/CatigoriesOfTransactions">
+        <span>Catigories of Transactions</span>
+      </Link>
     </div>
   );
 }

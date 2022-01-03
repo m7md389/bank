@@ -1,21 +1,24 @@
 const Express = require("express");
-const Transaction = require("./../model/Transactrion");
+const Transaction = require("./../model/transaction");
 const router = Express.Router();
 
-router.get("/transactrions", (req, res) => {
-  const transactions = Transaction.find({});
-  res.send(transactions);
+router.get("/transactions", async (req, res) => {
+  res.send(await Transaction.find({}).exec());
 });
 
-router.post("/transaction", (req, res) => {
+router.post("/transaction", async (req, res) => {
   const { amount, category, vendor } = req.body;
   new Transaction({ amount, category, vendor }).save();
   res.send("Added");
 });
 
 router.delete("/transaction", (req, res) => {
-  const { amount, category, vendor } = req.body;
-  Transaction.findOneAndDelete({ amount, category, vendor });
+  const { _id } = req.body;
+  if (!_id) {
+    res.status(400).send("no id sent")
+    return null
+  }
+  Transaction.findByIdAndDelete({ _id }).exec()
   res.send("Deleted");
 });
 

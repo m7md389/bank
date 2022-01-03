@@ -2,7 +2,7 @@ const Mongoose = require("mongoose");
 const Schema = Mongoose.Schema;
 
 const transactionSchema = new Schema({
-    abount: Number,
+    amount: Number,
     category: String,
     vendor: String,
 });

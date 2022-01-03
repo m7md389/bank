@@ -1,12 +1,19 @@
 function Transaction({ transaction, onDelete }) {
+  function getAmountClasses() {
+    if (transaction.amount > 0) return "positive";
+    return "negative";
+  }
+
   return (
     <div className="transaction-container">
-      <h4>Amount: {transaction.amount}</h4>
+      <h4>
+        Amount: <span className={getAmountClasses()}>{transaction.amount}</span>
+      </h4>
       <h4>Vendor: {transaction.vendor}</h4>
       <h4>Category: {transaction.category}</h4>
       <button
         className="delete-transaction"
-        onClick={() => onDelete(transaction)}
+        onClick={() => onDelete(transaction._id)}
       >
         Delete
       </button>
