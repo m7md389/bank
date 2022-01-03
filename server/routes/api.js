@@ -9,8 +9,7 @@ router.get("/transactrions", (req, res) => {
 
 router.post("/transaction", (req, res) => {
   const { amount, category, vendor } = req.body;
-  const transaction = new Transaction({ amount, category, vendor });
-  transaction.save();
+  new Transaction({ amount, category, vendor }).save();
   res.send("Added");
 });
 
