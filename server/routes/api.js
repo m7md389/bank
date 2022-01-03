@@ -1,6 +1,5 @@
-import Express from "express";
-import Transaction from "./../model/Transactrion";
-import Transaction from "./../../src/components/Transaction";
+const Express = require("express");
+const Transaction = require("./../model/Transactrion");
 const router = Express.Router();
 
 router.get("/transactrions", (req, res) => {
@@ -21,4 +20,4 @@ router.delete("/transaction", (req, res) => {
   res.send("Deleted");
 });
 
-export default router;
+module.exports = router;
