@@ -9,8 +9,8 @@ import CatigoriesOfTransactions from "./components/CatigoriesOfTransactions";
 import "./App.css";
 
 class App extends Component {
-  APP_URL = "http://localhost:3001";
   EMPTY_STRING = "";
+  APP_URL = EMPTY_STRING;
 
   constructor() {
     super();
@@ -20,8 +20,8 @@ class App extends Component {
       inputs: {
         amount: this.EMPTY_STRING,
         vendor: this.EMPTY_STRING,
-        category: this.EMPTY_STRING,
-      },
+        category: this.EMPTY_STRING
+      }
     };
   }
 
@@ -38,9 +38,9 @@ class App extends Component {
       inputs: {
         amount: this.EMPTY_STRING,
         vendor: this.EMPTY_STRING,
-        category: this.EMPTY_STRING,
+        category: this.EMPTY_STRING
       },
-      balance,
+      balance
     });
   };
 
@@ -50,7 +50,7 @@ class App extends Component {
       .post(this.APP_URL + "/transaction", {
         amount,
         vendor,
-        category,
+        category
       })
       .then(() => {
         this.getTransactions();
@@ -60,7 +60,7 @@ class App extends Component {
   handleDelete = (transactionId) => {
     axios
       .delete(this.APP_URL + "/transaction", {
-        data: { _id: transactionId },
+        data: { _id: transactionId }
       })
       .then(() => this.getTransactions());
   };
